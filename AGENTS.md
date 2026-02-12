@@ -2,6 +2,8 @@
 
 **For all contributors—human and agent.**
 
+project-name = dotfiles-nvim
+
 ---
 
 ## Agent Conduct
