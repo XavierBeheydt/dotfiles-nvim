@@ -17,11 +17,16 @@ A modern, modular, and fully-featured Neovim configuration written in Lua. Inclu
     ```sh
     git clone https://github.com/XavierBeheydt/dotfiles-nvim ~/.config/nvim
     ```
-2. **Start Neovim** (v0.9 or later recommended):
+2. **Start Neovim** (v0.11.6 or later recommended):
     ```sh
     nvim
     ```
 3. **Plugins will auto-install** on first launch. If any prompts arise regarding [lazy.nvim](https://github.com/folke/lazy.nvim), follow the instructions.
+4. **(Optional for fresh setups)**: Install all required dependencies via [`just`](https://just.systems/man/en/) (Pacman/Arch recommended)
+    ```sh
+    just install-deps
+    ```
+    > This will install all dependencies needed for the dotfiles (if using Arch/Pacman). If using `apt` or `brew`, see the justfile for implementation status.
 
 ## Directory Structure
 
