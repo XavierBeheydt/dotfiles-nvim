@@ -1,6 +1,6 @@
 # Copyright (c) 2026 Xavier Beheydt xavier.beheydt@gmail.com
 # Purpose: Helper tasks for dotfiles setup and management
-# Policy: see .ai/JUSTFILE.md for justfile governance and usage
+# Policy: see .agents/JUSTFILE.md for justfile governance and usage
 # Docs:
 #   - https://just.systems/man/en/
 #
