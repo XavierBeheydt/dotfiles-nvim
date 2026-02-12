@@ -8,52 +8,24 @@
 - Be clear, atomic, and helpful. Prioritize readable, well-documented changes.
 - Run `stylua .` before every commit.
 - Do not commit secrets or user-specific data.
+- **Never commit code without explicit user confirmation.**
 
 ## Build/Lint/Test
 - Format with: `stylua .`
 - Check load: `nvim --headless "+luafile %" +q lua/plugins/opencode.lua`
 - No additional tests unless present.
 
-## Copyright & License Headers
-- Every `.lua` file must begin with a copyright header.
-- Automate author/year from git config. If LICENSE exists, add a License line using its SPDX or identifier.
-  - Format:
-    ```lua
-    -- Copyright (c) <year> <author> <email>
-    -- License: <SPDX id or license name>  -- if LICENSE exists
-    -- Purpose: (brief file description)
-    ```
-- Insert/repair header if missing within first 10 lines.
-- If documentation links (e.g. plugin docs, official references, usage guides) are provided by the user or found during implementation, always ask the user if they want these added as a "Docs:" section immediately following the copyright/license/purpose header.
-  - Example:
-    -- Copyright (c) <year> <author> <email>
-    -- License: <SPDX id or license name>  -- if LICENSE exists
-    -- Purpose: (brief file description)
-    -- Docs:
-    --   - https://github.com/foo/bar
-    --   - https://neovim.io/
-- See reference links for SPDX identifiers.
+## just & justfile
+- Project task runner for this repository. See [.ai/JUSTFILE.md](.ai/JUSTFILE.md) for full justfile conventions, usage, and policy.
+- For more, read the [just official manual](https://just.systems/man/en/introduction.html).
 
-## Formatting & Style
-- Indent: 4 spaces. No tabs or trailing whitespace.
-- Strings: use double quotes by default.
-- Variable/function/file names: lowercase_with_underscores (except constructors interfacing with upstream APIs).
-- Line length: 80 chars (max 90 if absolutely needed).
-- No semicolons; one statement per line.
+## Lua: Coding Standards
+All Lua-specific contributor guidance now lives in [.ai/LUA.md](.ai/LUA.md). Please consult that document for copyright headers, formatting & style, imports, error handling, and public API comments.
 
-## Imports & Requires
-- Local `require` at top; avoid redundant requires in same scope.
-
-## Error Handling & Comments
-- Idioms: `if not result then return err end`. Fail gracefully, log (`vim.notify`) on user-facing errors.
-- Comments: brief, capitalized, space after dashes. Use LuaDoc for public APIs.
 ---
 
 ## References
-- Luanti Lua Code Style Guidelines: https://docs.luanti.org/for-engine-devs/lua-code-style-guidelines/
-- Stylua: https://github.com/JohnnyMorganz/StyLua
-- Neovim Lua Guide: https://github.com/nanotee/nvim-lua-guide
-- Neovim: https://neovim.io/
+- See .ai/README.md for full, up-to-date references for all languages/tools.
 - opencode.ai: https://opencode.ai/docs/
 
 ---
