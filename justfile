@@ -7,9 +7,6 @@
 # Usage: just install-deps
 
 
-project_name:="dotfiles-nvim"
-
-
 [group("install")]
 [linux]
 [doc("Installs all dotfiles-related dependencies for the project.")]
@@ -45,6 +42,9 @@ install-deps:
 install-deps:
 	winget install --id=DEVCOM.Lua -e
 
+
+
+project_name:="dotfiles-nvim"
 
 # get-task: Show all tasks for this project using Taskwarrior.
 [group("tasks")]
