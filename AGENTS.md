@@ -47,14 +47,21 @@
 ## Error Handling & Comments
 - Idioms: `if not result then return err end`. Fail gracefully, log (`vim.notify`) on user-facing errors.
 - Comments: brief, capitalized, space after dashes. Use LuaDoc for public APIs.
-
 ---
+
 ## References
 - Luanti Lua Code Style Guidelines: https://docs.luanti.org/for-engine-devs/lua-code-style-guidelines/
 - Stylua: https://github.com/JohnnyMorganz/StyLua
 - Neovim Lua Guide: https://github.com/nanotee/nvim-lua-guide
 - Neovim: https://neovim.io/
 - opencode.ai: https://opencode.ai/docs/
+
+---
+
+## 📚 Reference Documentation Policy
+- **Any external reference URLs (e.g., "Docs" sections, plugin docs, API links, or other URLs) that appear in `.lua` file comments MUST be included in the `README.md` under the "Resources & References" section.**
+- This ensures code/documentation synchronicity, helps onboard new users, and centralizes all relevant resources for easier discovery.
+- Review and update the reference list in the README whenever dependencies, plugins, or config-linked resources change.
 
 ---
 **Follow these rules before every contribution.**

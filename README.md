@@ -17,11 +17,14 @@ A modern, modular, and fully-featured Neovim configuration written in Lua. Inclu
     ```sh
     git clone https://github.com/XavierBeheydt/dotfiles-nvim ~/.config/nvim
     ```
+
 2. **Start Neovim** (v0.11.6 or later recommended):
     ```sh
     nvim
     ```
+
 3. **Plugins will auto-install** on first launch. If any prompts arise regarding [lazy.nvim](https://github.com/folke/lazy.nvim), follow the instructions.
+
 4. **(Optional for fresh setups)**: Install all required dependencies via [`just`](https://just.systems/man/en/) (Pacman/Arch recommended)
     ```sh
     just install-deps
@@ -67,6 +70,18 @@ A modern, modular, and fully-featured Neovim configuration written in Lua. Inclu
 - [Neovim official docs](https://neovim.io/)
 - [lazy.nvim Documentation](https://lazy.folke.io/)
 - [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim)
+- [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+- [Neovim Treesitter User Docs](https://neovim.io/doc/user/treesitter.html)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [LuaSnip: friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [zen-mode.nvim](https://github.com/folke/zen-mode.nvim)
+- [trouble.nvim](https://github.com/folke/trouble.nvim)
+- [everforest.nvim](https://github.com/sainnhe/everforest)
+- [Ruff - Neovim setup guide](https://docs.astral.sh/ruff/editors/setup/#neovim)
+- [Ruff - Editor settings](https://docs.astral.sh/ruff/editors/settings/)
+- [Ty - Neovim setup guide](https://docs.astral.sh/ty/editors/#neovim)
+- [Pyright](https://github.com/microsoft/pyright)
+- [Pyright User Guide](https://microsoft.github.io/pyright/#/)
 
 ## Author
 Xavier Beheydt (<xavier.beheydt@gmail.com>)
