@@ -1,0 +1,7 @@
+-- Copyright (c) 2026 Xavier Beheydt <xavier.beheydt@gmail.com>
+-- lua/config/treesitter.lua
+--
+-- TreeSitter configuration
+-- Docs:
+--   - https://neovim.io/
+--   - https://neovim.io/doc/user/treesitter.html
