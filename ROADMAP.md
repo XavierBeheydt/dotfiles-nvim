@@ -67,7 +67,7 @@ distribution -- a personal config you fully own and understand.
 │   │   ├── clangd/                # [NEW] clangd
 │   │   ├── typescript/            # [NEW] ts_ls or vtsls
 │   │   ├── html_css/              # [NEW] html, cssls, emmet
-│   │   └── cmake/                 # [NEW] cmake-language-server, taplo
+│   │   └── cmake/                 # [NEW] neocmakelsp, taplo
 │   ├── plugins/
 │   │   ├── colorscheme.lua        # [REPLACE] matugen + base16 (was everforest)
 │   │   ├── nvim-tree.lua          # [IMPROVE] git icons, layout, auto-close
@@ -86,7 +86,11 @@ distribution -- a personal config you fully own and understand.
 │   │   ├── dap.lua                # [NEW] debugging
 │   │   ├── mason.lua              # [NEW] tool installer
 │   │   ├── blink-cmp.lua          # [NEW] completion engine
-│   │   └── dashboard.lua          # [NEW] start screen (snacks)
+│   │   ├── dashboard.lua          # [NEW] start screen (snacks)
+│   │   ├── cmake-tools.lua        # [NEW] CMake build integration
+│   │   ├── persistence.lua        # [NEW] session save/restore
+│   │   ├── telescope-undo.lua     # [NEW] undo tree visualization
+│   │   └── markview.lua           # [NEW] in-buffer doc rendering
 │   ├── theme/                     # [NEW] matugen integration
 │   │   ├── init.lua               # Theme loading + SIGUSR1 hot-reload
 │   │   └── generated.lua          # Matugen output (gitignored)
@@ -213,7 +217,7 @@ All LSP configs use the native Neovim 0.11+ API (`vim.lsp.config` /
 | clangd | `lua/lsp/clangd/clangd.lua` -- `compile_commands.json` detection, header source switching, fallback flags. | DIY |
 | TypeScript | `lua/lsp/typescript/ts_ls.lua` -- JS, TS, JSX, TSX support. Consider vtsls as alternative. | DIY |
 | HTML / CSS / Emmet | `lua/lsp/html_css/` -- html-lsp, cssls, emmet_ls for fast HTML expansion. | DIY |
-| CMake + TOML | cmake-language-server for CMakeLists.txt, taplo for TOML files. | DIY |
+| CMake + TOML | neocmakelsp for CMakeLists.txt (faster, richer than cmake-language-server), cmake-tools.nvim for build integration, taplo for TOML files. | DIY + Plugin |
 
 **Target languages:** Lua, Python, Rust, C/C++, JavaScript/TypeScript,
 HTML/CSS, CMake, TOML, Just.
@@ -249,9 +253,47 @@ nvim-cmp, first-class snippet and AI source support, LazyVim default.
 
 ---
 
+### Phase 11 -- Workspace & History
+
+Manage sessions, projects, and undo history for a persistent editing experience.
+
+| Task | Description | Approach |
+|------|-------------|----------|
+| Add persistence.nvim | Auto-save and restore sessions (buffers, layout, cursor position) per directory. Keybind to restore last session (`<leader>qs`), stop session (`<leader>qd`). | Plugin |
+| Configure persistent undo | Enable `undofile` in options (if not already), set `undodir`, ensure `.undodir/` is gitignored. | DIY |
+| Add telescope-undo.nvim | Visual undo tree via telescope picker (`<leader>fu`). Browse undo history, preview diffs, restore to any point. | Plugin |
+
+**Key links:**
+- [persistence.nvim](https://github.com/folke/persistence.nvim)
+- [telescope-undo.nvim](https://github.com/debugloop/telescope-undo.nvim)
+
+---
+
+### Phase 12 -- Documentation Languages
+
+Expand the config for writing documentation, notes, and technical content beyond
+Markdown. Add LSPs, treesitter parsers, and in-buffer rendering.
+
+| Task | Description | Approach |
+|------|-------------|----------|
+| Add marksman LSP | Markdown LSP for link completion, TOC, references. Configure via `vim.lsp.config`, install via Mason. | DIY |
+| Add markview.nvim | Universal in-buffer renderer for Markdown, LaTeX math, Typst, HTML. Concealed rendering without leaving the editor. | Plugin |
+| Add Typst support | Install `tinymist` LSP via Mason, add `typst` treesitter parser. | DIY |
+| Add LaTeX support | Install `texlab` LSP via Mason, add `latex` treesitter parser. | DIY |
+| Add prose tooling | Spell-check (`spell` + aspell/hunspell), grammar via `vale` or `ltex-ls`, wired through LSP diagnostics. | DIY + Plugin |
+
+**Key links:**
+- [marksman](https://github.com/artempyanykh/marksman)
+- [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
+- [tinymist (Typst LSP)](https://github.com/Myriad-Dreamin/tinymist)
+- [texlab (LaTeX LSP)](https://github.com/latex-lsp/texlab)
+- [vale (prose linter)](https://github.com/errata-ai/vale)
+
+---
+
 ## DIY vs Plugin Summary
 
-Features you will **write yourself** (10 tasks):
+Features you will **write yourself** (12 tasks):
 - Keymaps module
 - Autocmds module
 - Editor options
@@ -262,10 +304,14 @@ Features you will **write yourself** (10 tasks):
 - Auto-pairs
 - Toggle utilities
 - Highlight overrides for matugen
+- Persistent undo configuration
+- Prose tooling (spell, grammar)
 
-Features handled by **plugins** (25 tasks):
+Features handled by **plugins** (31 tasks):
 - Theming bridge (base16-nvim), lualine, bufferline, gitsigns, which-key,
-  flash, todo-comments, blink.cmp, nvim-dap, mason, and all LSP server configs.
+  flash, todo-comments, blink.cmp, nvim-dap, mason, persistence.nvim,
+  telescope-undo.nvim, cmake-tools.nvim, markview.nvim, and all LSP server
+  configs (including marksman, tinymist, texlab).
 
 ---
 
@@ -283,6 +329,15 @@ Features handled by **plugins** (25 tasks):
 | Neovim 0.11 LSP API | https://neovim.io/doc/user/lsp.html |
 | lazy.nvim | https://lazy.folke.io/ |
 | Taskwarrior (task tracking) | https://taskwarrior.org/ |
+| persistence.nvim | https://github.com/folke/persistence.nvim |
+| telescope-undo.nvim | https://github.com/debugloop/telescope-undo.nvim |
+| cmake-tools.nvim | https://github.com/Civitasv/cmake-tools.nvim |
+| neocmakelsp | https://github.com/neocmakelsp/neocmakelsp |
+| markview.nvim | https://github.com/OXY2DEV/markview.nvim |
+| marksman | https://github.com/artempyanykh/marksman |
+| tinymist (Typst LSP) | https://github.com/Myriad-Dreamin/tinymist |
+| texlab (LaTeX LSP) | https://github.com/latex-lsp/texlab |
+| vale (prose linter) | https://github.com/errata-ai/vale |
 
 ---
 
@@ -306,30 +361,15 @@ task <id> done
 
 ---
 
-## Future Enhancements: Markdown & Documentation
+## Future Enhancements
 
-First-class Markdown support is planned to make this config suitable for
-writing documentation, notes, and README-style content. The goal is a
-comfortable, modern Markdown authoring experience inside Neovim with
-live-preview, linting, formatting, and structural navigation.
+Additional items to consider after all phases are complete:
 
-Proposed work items:
-
-- Add a Markdown LSP (e.g. `marksman`) and configure it via the native
-  `vim.lsp.config` API; install the binary via Mason (installer-only).
-- Ensure `nvim-treesitter` parsers for `markdown` and `markdown_inline` are
-  included and enable textobjects for headings and lists.
-- Provide live preview options: terminal preview with `glow`, in-editor
-  preview with `markdown-preview.nvim` or `peek.nvim`, and a keybinding
-  (`<leader>mp`) to toggle preview.
-- Add linting/formatting: `markdownlint` (or `prettier` for MDX), wired into
-  the workflow via LSP or null-ls where appropriate.
-- Add prose tooling: spell-check (`spell` + `aspell`/`hunspell`), grammar
-  checks via `vale` or `languagetool` hooks, and TOC generation support.
-- Diagram & math support: recommend `mermaid-cli` or external renderers for
-  codeblock previews, and math rendering via KaTeX/MathJax when exporting.
-- Notes & knowledge-base: consider `neorg`, `vimwiki`, or lightweight
-  Obsidian-compatible helpers for daily notes, backlinks, and templates.
-
-Suggested Taskwarrior tag: `+phase11` (Markdown & docs). These items are
-optional and can be implemented incrementally.
+- **Notes & knowledge-base:** neorg, vimwiki, or Obsidian-compatible helpers
+  for daily notes, backlinks, and templates.
+- **Diagram & math rendering:** mermaid-cli for codeblock previews, KaTeX/MathJax
+  for math export.
+- **Additional doc formats:** AsciiDoc, reStructuredText (esbonio LSP),
+  Org mode (nvim-orgmode), MDX, Djot.
+- **edgy.nvim:** Window layout management (side panels, bottom panels) once
+  the UI stabilizes.
