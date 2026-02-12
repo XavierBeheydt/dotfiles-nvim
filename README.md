@@ -1,4 +1,4 @@
-# Neovim Config by Xavier Beheydt
+# NeoVim Dotfiles
 
 A modern, modular, and fully-featured Neovim configuration written in Lua. Includes plugin management via [lazy.nvim](https://github.com/folke/lazy.nvim), Python language support (LSP: ruff, ty, pyright), Treesitter, custom editor options, and curated plugins for next-level productivity.
 
