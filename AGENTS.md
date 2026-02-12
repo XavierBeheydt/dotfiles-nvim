@@ -24,6 +24,14 @@
     -- Purpose: (brief file description)
     ```
 - Insert/repair header if missing within first 10 lines.
+- If documentation links (e.g. plugin docs, official references, usage guides) are provided by the user or found during implementation, always ask the user if they want these added as a "Docs:" section immediately following the copyright/license/purpose header.
+  - Example:
+    -- Copyright (c) <year> <author> <email>
+    -- License: <SPDX id or license name>  -- if LICENSE exists
+    -- Purpose: (brief file description)
+    -- Docs:
+    --   - https://github.com/foo/bar
+    --   - https://neovim.io/
 - See reference links for SPDX identifiers.
 
 ## Formatting & Style
